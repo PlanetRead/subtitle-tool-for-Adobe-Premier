@@ -10,7 +10,7 @@ Go to the registry editor and to the path mentioned below, then change the playe
 
 **Registry Path:** `Computer\HKEY_CURRENT_USER\Software\Adobe\CSXS.11`
 
-![Windows Registry Editor showing PlayerDebugMode setting](https://github.com/PlanetRead/subtitle-tool-for-Adobe-Premier/blob/rahul_featureOne/installation-screenshot.png)
+<img width="1206" height="630" alt="image" src="https://github.com/user-attachments/assets/271cb18f-d4b4-4959-a086-739a387641fc" />
 
 ### For Mac
 
