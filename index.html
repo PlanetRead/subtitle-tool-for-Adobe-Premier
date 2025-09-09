@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Subtitle Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Subtitle Tool</h2>
+        
+        <!-- Mode Selection -->
+        <div class="mode-section">
+            <label for="subtitleMode">Select Feature:</label>
+            <select id="subtitleMode">
+                <option value="static">Feature 1: Static Subtitles</option>
+                <option value="color">Feature 2: Color Subtitles</option>
+                <option value="transliteration">Feature 3: Transliteration Subtitles</option>
+            </select>
+        </div>
+
+        <!-- Feature 1: Static Subtitles -->
+        <div class="feature-panel" id="staticModeControls">
+            <h3>Static Subtitles</h3>
+            <div class="file-section">
+                <div class="file-group">
+                    <button id="setText">Select Text File</button>
+                    <span id="textFileStatus" class="file-status">No file selected</span>
+                </div>
+            </div>
+            <div class="text-section">
+                <label for="subtitleText">Current Text:</label>
+                <textarea id="subtitleText" rows="3" placeholder="Text will appear here after file selection"></textarea>
+            </div>
+            <div class="button-section">
+                <button id="startText">Mark Start</button>
+                <button id="endText">Mark End</button>
+            </div>
+        </div>
+
+        <!-- Feature 2: Color Subtitles -->
+        <div class="feature-panel" id="colorModeControls" style="display: none;">
+            <h3>Color Subtitles</h3>
+            
+            <div class="settings-section">
+                <div class="setting-group">
+                    <label for="videoTrackSelect">Video Track:</label>
+                    <select id="videoTrackSelect">
+                        <option value="1">V1</option>
+                        <option value="2" selected>V2</option>
+                        <option value="3">V3</option>
+                        <option value="4">V4</option>
+                        <option value="5">V5</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="colorModeSelect">Mode:</label>
+                    <select id="colorModeSelect">
+                        <option value="manual">Manual Crop</option>
+                   
+                        <option value="animated">Animated MOGRT</option>
+                    </select>
+                </div>
+
+            
+            </div>
+
+            <!-- Manual Crop Mode Files -->
+            <div class="file-section" id="manualModeFiles">
+                <h4>Manual Crop Mode</h4>
+                <div class="file-group">
+                    <button id="setSrtFile">Select SRT File</button>
+                    <span id="srtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <div class="file-group">
+                    <button id="setMogrt">Select White MOGRT</button>
+                    <span id="whiteMogrtStatus" class="file-status">No file selected</span>
+                    
+                    <button id="setMogrt2">Select Green MOGRT</button>
+                    <span id="greenMogrtStatus" class="file-status">No file selected</span>
+                </div>
+            </div>
+            
+            <!-- Animated Mode Files -->
+            <div class="file-section" id="animatedModeFiles" style="display: none;">
+                <h4>Animated MOGRT Mode</h4>
+                <div class="file-group">
+                    <button id="setSrtFileAnimated">Select SRT File</button>
+                    <span id="srtStatusAnimated" class="file-status">No file selected</span>
+                </div>
+                
+                <div class="file-group">
+                    <button id="setAnimatedMogrt">Select Animated MOGRT</button>
+                    <span id="animatedMogrtStatus" class="file-status">No file selected</span>
+                </div>
+            </div>
+
+            <!-- Manual Text Method Section -->
+            <div class="file-section" id="manualTextMethodSection" style="display: none;">
+                <h4>Manual Text Method</h4>
+                <p class="method-description">Create subtitles by manually marking start and end times for each line of text.</p>
+                
+                <!-- File Selection -->
+                <div class="file-selection-section">
+                    <h5>Step 1: Select Files</h5>
+                    <div class="file-group">
+                        <button id="setTextFile">Select Text File (.txt)</button>
+                        <span id="textFileStatus" class="file-status">No file selected</span>
+                    </div>
+                    
+                    <div class="file-group">
+                        <button id="setManualWhiteMogrt">Select White MOGRT</button>
+                        <span id="manualWhiteMogrtStatus" class="file-status">No file selected</span>
+                        
+                        <button id="setManualGreenMogrt">Select Green MOGRT</button>
+                        <span id="manualGreenMogrtStatus" class="file-status">No file selected</span>
+                    </div>
+                </div>
+
+                <!-- Manual Timing Section -->
+                <div class="manual-timing-section" id="manualTimingSection">
+                    <h5>Step 2: Manual Timing</h5>
+                    <div class="timing-info">
+                        <div class="current-line-display">
+                            <strong>Current Line:</strong> <span id="currentLineInfo">No text file loaded</span>
+                        </div>
+                        <div class="timing-progress">
+                            <span id="timingProgressInfo">Select a text file to start timing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timing-controls">
+                        <div class="timing-buttons">
+                            <button id="markStartBtn" class="timing-btn start-btn" disabled>START</button>
+                            <button id="markEndBtn" class="timing-btn end-btn" disabled>END</button>
+                        </div>
+                        <div class="timing-actions">
+                            <button id="resetManualTimingBtn" class="reset-btn" disabled>Reset Timing</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insertion Section -->
+                <div class="insertion-section" id="insertionSection">
+                    <h5>Step 3: Insert Subtitles</h5>
+                    <div class="insertion-buttons">
+                        <button id="insertManualTimedMogrtsBtn" class="primary-btn" disabled>Insert Manual Timed MOGRTs</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Section for Manual Crop and Animated Modes -->
+            <div class="action-section" id="standardActionSection">
+                <button id="autoInsertBothMogrtsBtn" class="primary-btn">Insert Subtitles</button>
+                <button id="manualCropBtn">Crop Instructions</button>
+            </div>
+        </div>
+
+        <!-- Feature 3: Transliteration Subtitles -->
+        <div class="feature-panel" id="transliterationModeControls" style="display: none;">
+            <h3>Transliteration Subtitles</h3>
+            
+            <div class="settings-section">
+                <div class="setting-group">
+                    <label for="transliterationVideoTrackSelect">Video Track:</label>
+                    <select id="transliterationVideoTrackSelect">
+                        <option value="1">V1</option>
+                        <option value="2" selected>V2</option>
+                        <option value="3">V3</option>
+                        <option value="4">V4</option>
+                        <option value="5">V5</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="transliterationModeSelect">Mode:</label>
+                    <select id="transliterationModeSelect">
+                        <option value="manual">Manual Crop</option>
+                        <option value="animated">Animated MOGRT</option>
+                      
+                    </select>
+                </div>
+
+               
+            </div>
+
+            <div class="file-section">
+                <div class="file-group">
+                    <button id="setTransliterationSrt">Select Transliteration SRT</button>
+                    <span id="transliterationSrtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <div class="file-group">
+                    <button id="setTranscriptionSrt">Select Transcription SRT</button>
+                    <span id="transcriptionSrtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <div class="file-group" id="transliterationManualFiles">
+                    <h5>Transliteration MOGRTs (Green & White):</h5>
+                    <button id="setTransliterationGreenMogrt">Select Transliteration Green MOGRT</button>
+                    <span id="transliterationGreenMogrtStatus" class="file-status">No file selected</span>
+                    
+                    <button id="setTransliterationWhiteMogrt">Select Transliteration White MOGRT</button>
+                    <span id="transliterationWhiteMogrtStatus" class="file-status">No file selected</span>
+                    
+                    <h5>Transcription MOGRT (White):</h5>
+                    <button id="setTranscriptionMogrt">Select Transcription White MOGRT</button>
+                    <span id="transcriptionMogrtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <div class="file-group" id="transliterationAnimatedFiles" style="display: none;">
+                    <button id="setTransliterationAnimatedMogrt">Select Animated MOGRT</button>
+                    <span id="transliterationAnimatedMogrtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <!-- Manual Text Mode Section -->
+                <div class="file-group" id="transliterationManualTextFiles" style="display: none;">
+                    <h5>Manual Text Input:</h5>
+                    <button id="setTransliterationTextFile">Select Text File (.txt)</button>
+                    <span id="transliterationTextFileStatus" class="file-status">No file selected</span>
+                    
+                    <h5>Transliteration MOGRTs (Green & White):</h5>
+                    <button id="setTransliterationManualGreenMogrt">Select Transliteration Green MOGRT</button>
+                    <span id="transliterationManualGreenMogrtStatus" class="file-status">No file selected</span>
+                    
+                    <button id="setTransliterationManualWhiteMogrt">Select Transliteration White MOGRT</button>
+                    <span id="transliterationManualWhiteMogrtStatus" class="file-status">No file selected</span>
+                    
+                    <h5>Transcription MOGRT (White):</h5>
+                    <button id="setTransliterationManualTranscriptionMogrt">Select Transcription White MOGRT</button>
+                    <span id="transliterationManualTranscriptionMogrtStatus" class="file-status">No file selected</span>
+                </div>
+                
+                <!-- Manual Timing Section -->
+                <div class="manual-timing-section" id="transliterationManualTimingSection" style="display: none;">
+                    <h5>Step 2: Manual Timing</h5>
+                    <div class="timing-info">
+                        <div class="current-line-display">
+                            <strong>Current Line:</strong> <span id="transliterationCurrentLineInfo">No text file loaded</span>
+                        </div>
+                        <div class="timing-progress">
+                            <span id="transliterationTimingProgressInfo">Select a text file to start timing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timing-controls">
+                        <div class="timing-buttons">
+                            <button id="transliterationMarkStartBtn" class="timing-btn start-btn" disabled>START</button>
+                            <button id="transliterationMarkEndBtn" class="timing-btn end-btn" disabled>END</button>
+                        </div>
+                        <div class="timing-actions">
+                            <button id="transliterationResetManualTimingBtn" class="reset-btn" disabled>Reset Timing</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Manual Insertion Section -->
+                <div class="insertion-section" id="transliterationManualInsertionSection" style="display: none;">
+                    <h5>Step 3: Insert Subtitles</h5>
+                    <div class="insertion-buttons">
+                        <button id="insertTransliterationManualTimedMogrtsBtn" class="primary-btn" disabled>Insert Manual Timed MOGRTs</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button id="insertTransliterationSubtitlesBtn" class="primary-btn">Insert Subtitles</button>
+                <button id="transliterationCropBtn">Crop Instructions</button>
+            </div>
+        </div>
+
+        <!-- Common Actions -->
+        <div class="common-actions">
+            <button id="reset">Reset All</button>
+        </div>
+    </div>
+
+    <script src="CSInterface.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

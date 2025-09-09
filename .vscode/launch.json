@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "type": "extendscript-debug",
+      "request": "launch",
+      "name": "Debug Subtitle Tool in Premiere",
+      "script": "${workspaceFolder}/jsx/subtitles.jsx",
+      "hostAppSpecifier": "premierepro-25.0"
+    }
+  ]
+}
