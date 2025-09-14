@@ -1,6 +1,6 @@
 # Installation Instructions
 
-##you can have a look at a toturial on the same [here](https://drive.google.com/file/d/1jrdd3F4BDPjGcT03AyVxs8L3jQoH5fLU/view?usp=sharing)
+## You can have a look at a tutorial on the same [here](https://drive.google.com/file/d/1jrdd3F4BDPjGcT03AyVxs8L3jQoH5fLU/view?usp=sharing)
 
 ## How to load up the extension
 
