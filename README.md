@@ -6,5 +6,8 @@ A lightweight CEP extension to streamline subtitle workflows in Adobe Premiere P
 - **Subtitle Insertion**: Generate subtitle lines from the script without leaving Premiere.
 - **Subtitles with color transition**: Seperated into 2 different features, one is for normal text and other is for transliterations.
 
+
+## Download the MOGRTs from [here](https://drive.google.com/drive/folders/1wNYxClRCYQ5pIbReoqfEa1fuloR_wVaI?usp=sharing)
+
 ## Author
 Rahul Shendre
