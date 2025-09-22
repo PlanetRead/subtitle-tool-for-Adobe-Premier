@@ -1,41 +1,71 @@
 # Installation Instructions
 
-## You can have a look at a tutorial on the same [here](https://drive.google.com/file/d/1jrdd3F4BDPjGcT03AyVxs8L3jQoH5fLU/view?usp=sharing)
+## Tutorial
 
-## How to load up the extension
+You can follow a tutorial [here](https://drive.google.com/file/d/1jrdd3F4BDPjGcT03AyVxs8L3jQoH5fLU/view?usp=sharing).
 
-We will first need to setup the player debug mode to 1 - here's how to do it -
+## Enable Player Debug Mode
 
-### For Windows
+The CSXS/CEP version differs depending on your Premiere Pro version:
 
-Go to the registry editor and to the path mentioned below, then change the playerdebugmode to 1, if not present simply add one and set the data to 1.
+| Premiere Pro Version | CSXS/CEP Version |
+| -------------------- | ---------------- |
+| 2024.x               | 11               |
+| 2025.x               | 12               |
 
-**Registry Path:** `Computer\HKEY_CURRENT_USER\Software\Adobe\CSXS.11`
+### Windows
 
-<img width="1206" height="630" alt="image" src="https://github.com/user-attachments/assets/271cb18f-d4b4-4959-a086-739a387641fc" />
+1. Open **Registry Editor**.
+2. Navigate to:
 
-### For Mac
-
-On MacOS, type the following into Terminal, then relaunch Finder (either via rebooting, or from the Force Quit dialog):
-
-```bash
-defaults write /Users/<username>/Library/Preferences/com.adobe.CSXS.11.plist PlayerDebugMode 1
+```
+HKEY_CURRENT_USER\Software\Adobe\CSXS.<CEP version>
 ```
 
-## Put panel into extensions directory
+> Replace `<CEP version>` with 11 or 12 depending on Premiere version.
 
-Put your own panel's containing directory here, to have Premiere Pro load it:
+3. Add or edit the key `PlayerDebugMode` and set value to `1`.
 
-**Windows:** `C:\Program Files (x86)\Common Files\Adobe\CEP\extensions`
+### macOS
 
-**Mac:** `/Library/Application Support/Adobe/CEP/extensions`
+1. Open **Terminal**.
+2. Run the command:
 
-> **Note:** That's the root `/Library`, not a specific user's `~/Library`...
+```bash
+defaults write com.adobe.CSXS.<CEP version> PlayerDebugMode -bool YES
+```
 
-## Loading the Extension
+> Replace `<CEP version>` with 11 or 12 depending on Premiere version.
 
-1. Simply open Premiere Pro
-2. Go into **Window → Extensions**
-3. Open up the desired extension
+3. Relaunch Finder via **Force Quit → Finder → Relaunch** or reboot.
 
-If in case the extension is not visible, restart Premiere Pro and now it should be visible.
+### Verify Debug Mode
+
+```bash
+defaults read com.adobe.CSXS.<CEP version> PlayerDebugMode
+```
+
+* Returns `1` or `YES` if debug mode is active.
+
+## Place Panel into Extensions Directory
+
+* **Windows:**
+
+```
+C:\Program Files (x86)\Common Files\Adobe\CEP\extensions
+```
+
+* **macOS:**
+
+```
+/Library/Application Support/Adobe/CEP/extensions
+```
+
+> Use the system `/Library`, not `~/Library`.
+
+## Load the Extension
+
+1. Open **Adobe Premiere Pro**.
+2. Go to **Window → Extensions**.
+3. Select your plugin.
+4. If it doesn’t appear, restart Premiere Pro.
